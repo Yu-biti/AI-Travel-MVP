@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 智能旅遊路線規劃</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+    <div class="container">
+        <div id="map-container"><div id="map"></div></div>
+
+        <div id="info-panel">
+            
+            <div id="page-1">
+                <h2>🌍 AI 行程規劃精靈</h2>
+                
+                <div class="form-group">
+                    <label>📍 起點：</label>
+                    <input type="text" id="start-point" placeholder="例如：台北火車站 或 高雄楠梓">
+                </div>
+
+                <div id="waypoints-container"></div>
+                <button id="add-stop-btn" class="secondary-btn small-btn">+ 新增中途停靠站</button>
+
+                <div class="form-group" style="margin-top: 15px;">
+                    <label>🏁 終點：</label>
+                    <input type="text" id="end-point" placeholder="例如：台南安平 或 墾丁">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group half">
+                        <label>🛑 AI 推薦幾站：</label>
+                        <input type="number" id="stop-count" value="4" min="1" max="10">
+                    </div>
+                    <div class="form-group half">
+                        <label>⭐ 最低 Google 評分：</label>
+                        <select id="min-rating">
+                            <option value="1">1.0 顆星以上</option>
+                            <option value="2">2.0 顆星以上</option>
+                            <option value="3">3.0 顆星以上</option>
+                            <option value="4" selected>4.0 顆星以上</option>
+                            <option value="5">5.0 顆星 (完美評價)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>🎨 旅遊風格：</label>
+                    <select id="travel-style">
+                        <option value="food">🍜 美食狂熱 (在地小吃、夜市)</option>
+                        <option value="leisure">☕ 悠閒放鬆 (網美咖啡廳、飯店)</option>
+                        <option value="sports">⛰️ 運動健走 (步道、自然景觀)</option>
+                    </select>
+                </div>
+
+                <button id="submit-btn" class="primary-btn">✨ 開始 AI 智能規劃</button>
+            </div>
+
+            <div id="page-2" class="hidden">
+                <h2>📜 您的專屬 AI 行程</h2>
+                <div id="loading" class="hidden">
+                    <p>AI 正在計算真實道路最短路徑，並啟動爬蟲搜尋周邊景點... 🤖⏳</p>
+                </div>
+                
+                <div id="itinerary-content" class="hidden">
+                    <div class="alert-box">💡 地圖上的 <b>黃色標記</b> 是 AI 為您額外爬取的周邊熱門好去處，點擊地標可查看詳細情報！</div>
+                    <div id="itinerary-list"></div>
+                    
+                    <div class="button-group">
+                        <button id="refresh-btn" class="primary-btn outline">🔄 重新刷新路線</button>
+                        <button id="back-btn" class="secondary-btn">🔙 回上一頁設定</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="page-3" class="hidden">
+                <button id="back-to-route-btn" class="secondary-btn" style="width: auto; margin-bottom: 15px; padding: 8px 15px; font-size: 14px;">🔙 返回路線總覽</button>
+                
+                <img id="detail-img" class="place-img" src="" alt="景點圖片" style="max-height: 250px; object-fit: cover;">
+                <h2 id="detail-title" style="margin-top: 10px; margin-bottom: 5px;">景點名稱</h2>
+                <span id="detail-tag" class="time-badge" style="background: #e74c3c;">類別</span>
+
+                <div class="stop-info" style="border-top: none; padding-top: 5px;">
+                    <p><b>📍 地址：</b> <span id="detail-address"></span></p>
+                    <p><b>⭐ Google 評分：</b> <span id="detail-rating" class="rating"></span></p>
+                    <p><b>🕒 營業時間：</b> <span id="detail-hours"></span></p>
+                    
+                    <div class="menu-box" style="margin-top: 15px;">
+                        <p id="detail-desc" style="margin-top: 0;"></p>
+                        <div id="detail-extra" style="margin-top: 10px; padding-top: 10px; border-top: 1px dashed #ccc;">
+                            </div>
+                    </div>
+
+                    <a id="detail-link" href="https://www.google.com/maps" target="_blank" style="display:inline-block; margin-top:15px; color:#3498db; text-decoration: none; font-weight: bold;">🔗 前往官方網站 / Google Maps</a>
+                </div>
+
+                <h3 style="margin-top: 25px; border-bottom: 2px solid #ecf0f1; padding-bottom: 5px;">💬 AI 爬蟲評價摘要</h3>
+                <div id="detail-reviews" class="menu-box" style="background: #fdfefe; border-left: 4px solid #f1c40f;">
+                    </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
