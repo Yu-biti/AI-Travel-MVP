@@ -1,0 +1,36 @@
+* { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+body { margin: 0; padding: 0; background-color: #f4f7f6; }
+.container { display: flex; height: 100vh; }
+
+#map-container { width: 50%; height: 100%; }
+#map { width: 100%; height: 100%; z-index: 1; }
+
+#info-panel { width: 50%; padding: 30px; overflow-y: auto; background: white; box-shadow: -5px 0 15px rgba(0,0,0,0.05); z-index: 2; }
+h2 { color: #2c3e50; border-bottom: 2px solid #ecf0f1; padding-bottom: 10px; }
+.form-group { margin-bottom: 15px; }
+.form-row { display: flex; gap: 15px; }
+.half { width: 50%; }
+label { display: block; margin-bottom: 5px; font-weight: bold; color: #34495e; font-size: 14px; }
+input, select { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; font-size: 14px; }
+
+button { cursor: pointer; padding: 12px 15px; border: none; border-radius: 5px; font-weight: bold; transition: 0.3s; font-size: 15px; }
+.primary-btn { width: 100%; background-color: #3498db; color: white; margin-top: 10px; }
+.primary-btn:hover { background-color: #2980b9; }
+.primary-btn.outline { background-color: white; color: #3498db; border: 2px solid #3498db; }
+.primary-btn.outline:hover { background-color: #e8f4fd; }
+.secondary-btn { background-color: #ecf0f1; color: #7f8c8d; width: 100%; margin-top: 10px; }
+.secondary-btn:hover { background-color: #bdc3c7; }
+.hidden { display: none !important; }
+
+/* 折疊卡片與詳細內容樣式 */
+details { background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; margin-bottom: 10px; padding: 10px; }
+summary { font-weight: bold; font-size: 16px; cursor: pointer; color: #2c3e50; list-style: none; display: flex; align-items: center; }
+summary::-webkit-details-marker { display: none; }
+.time-badge { background: #e67e22; color: white; padding: 2px 8px; border-radius: 12px; font-size: 12px; margin-right: 10px; }
+.stop-info { margin-top: 10px; padding-top: 10px; border-top: 1px dashed #ccc; font-size: 14px; color: #555; line-height: 1.6; }
+.rating { color: #f39c12; font-weight: bold; }
+.menu-box { background: #fff; padding: 10px; border-radius: 5px; border: 1px solid #ddd; margin-top: 10px; font-size: 13px; }
+.place-img { width: 100%; max-height: 200px; object-fit: cover; border-radius: 6px; margin-top: 10px; }
+.source-text { font-size: 11px; color: #95a5a6; font-style: italic; display: block; margin-top: 5px; }
+
+.button-group { margin-top: 30px; display: flex; flex-direction: column; gap: 10px; }
